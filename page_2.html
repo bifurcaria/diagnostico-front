@@ -20,8 +20,12 @@ let range = 6;
 
 let ax = [];
 let ay = [];
+var btn;
 
-
+function algo() {
+  saveCanvas("imagen","jpg");
+}
+       
 function setup() {
     createCanvas(windowWidth - 50, windowHeight - 50).position(25, 30).style("z-index", -1);
   for ( let i = 0; i < num; i++ ) {
@@ -29,6 +33,10 @@ function setup() {
     ay[i] = height / 2;
   }
   frameRate(30);
+   
+  btn=createButton('descargar');
+  btn.position (windowWidth - 100, windowHeight - 50);
+  btn.mousePressed(algo);
 }
 
 function draw() {
