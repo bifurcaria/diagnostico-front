@@ -20,10 +20,9 @@ let columns;
 let rows;
 let board;
 let next;
+var btn;
 
-            var btn;
-
-  function algo() {
+function algo() {
   saveCanvas("imagen","jpg");
 }
             
@@ -46,7 +45,7 @@ function setup() {
   }
   init();
   
-    btn=createButton('descargar');
+  btn=createButton('descargar');
   btn.position (20,20);
   btn.mousePressed(algo);
 }
