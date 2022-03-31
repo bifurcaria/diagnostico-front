@@ -30,6 +30,10 @@ therules[1] = ['B', '+AF-BFB-FA+']; // segunda regla
 
 let whereinstring = 0; // dónde estamos en el sistema-L
 
+function algo() {
+  saveCanvas("imagen","jpg");
+}            
+            
 function setup() {
     createCanvas(windowWidth - 50, windowHeight - 50).position(25, 30).style("z-index", -1);
   background(255);
@@ -43,6 +47,10 @@ function setup() {
   for (let i = 0; i < numloops; i++) {
     thestring = lindenmayer(thestring);
   }
+    
+      btn=createButton('descargar');
+  btn.position (windowWidth - 100, windowHeight - 50);
+  btn.mousePressed(algo);
 }
 
 function draw() {
