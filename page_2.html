@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Evaluación diagnóstica de Introducción al Desarrollo Front End con HTML, CSS y JavaScript" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="carla j. matus" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <title>página 2</title>
+    </head>
+    <body>
+        <div id="uno"><a href="index.html">portada</a></div>
+        <div id="otro"><a href="page_1.html">01</a> / <strong><a href="page_2.html">02</a></strong> / <a href="page_3.html">03</a></div>
+        <script>
+
+let num = 2000;
+let range = 6;
+
+let ax = [];
+let ay = [];
+
+
+function setup() {
+    createCanvas(windowWidth - 50, windowHeight - 50).position(25, 30).style("z-index", -1);
+  for ( let i = 0; i < num; i++ ) {
+    ax[i] = width / 2;
+    ay[i] = height / 2;
+  }
+  frameRate(30);
+}
+
+function draw() {
+  background(51);
+
+  // Mover todos los elementos un lugar a la izquierda
+  for ( let i = 1; i < num; i++ ) {
+    ax[i - 1] = ax[i];
+    ay[i - 1] = ay[i];
+  }
+
+  // Poner un nuevo valor al final del arreglo
+  ax[num - 1] += random(-range, range);
+  ay[num - 1] += random(-range, range);
+
+  // Limitar la posición de todos los puntos a estar dentro de la pantalla
+  ax[num - 1] = constrain(ax[num - 1], 0, width);
+  ay[num - 1] = constrain(ay[num - 1], 0, height);
+
+  // Dibujar una línea conectando los puntos
+  for ( let j = 1; j < num; j++ ) {
+    let val = j / num * 204.0 + 51;
+    stroke(val);
+    line(ax[j - 1], ay[j - 1], ax[j], ay[j]);
+  }
+}
+function windowResized() {
+    resizeCanvas(windowWidth - 50, windowHeight - 50);
+}
+        </script>
+    </body>
+</html>
